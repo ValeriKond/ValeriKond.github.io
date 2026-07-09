@@ -54,6 +54,7 @@ window.addEventListener('scroll', () => {
 // Dynamic age & tenure
 (function initDynamicDates() {
   const BIRTHDAY = new Date(2003, 5, 11); // 11 Jun 2003
+  const CAREER_START = new Date(2023, 2, 1); // Mar 2023, first role
   const OTK_START = new Date(2024, 6, 1); // Jul 2024
   const today = new Date();
 
@@ -62,6 +63,14 @@ window.addEventListener('scroll', () => {
     const monthDiff = now.getMonth() - birth.getMonth();
     if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < birth.getDate())) age--;
     return age;
+  }
+
+  function calcExperienceYears(start, end) {
+    let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+    if (end.getDate() < start.getDate()) months--;
+    if (months < 0) months = 0;
+    const years = Math.floor(months / 12);
+    return `${years}+ years`;
   }
 
   function formatTenure(start, end) {
@@ -79,6 +88,9 @@ window.addEventListener('scroll', () => {
 
   const ageEl = document.getElementById('age-value');
   if (ageEl) ageEl.textContent = calcAge(BIRTHDAY, today);
+
+  const expEl = document.getElementById('experience-value');
+  if (expEl) expEl.textContent = calcExperienceYears(CAREER_START, today);
 
   const tenureEl = document.getElementById('otk-tenure');
   if (tenureEl) tenureEl.textContent = formatTenure(OTK_START, today);
