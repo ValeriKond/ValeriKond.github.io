@@ -9,6 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
@@ -30,7 +38,13 @@
       <a href="#impact">Impact</a>
       <a href="#contact">Contact</a>
     </div>
-    <a class="nav-cta" href="Valerii_Kondaurov_CV.pdf" download="Valerii_Kondaurov_CV.pdf">Download CV</a>
+    <div class="nav-actions">
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch theme" title="Switch theme">
+        <span class="theme-icon theme-icon-moon" aria-hidden="true">Dark</span>
+        <span class="theme-icon theme-icon-sun" aria-hidden="true">Light</span>
+      </button>
+      <a class="nav-cta" href="Valerii_Kondaurov_CV.pdf" download="Valerii_Kondaurov_CV.pdf">Download CV</a>
+    </div>
   </nav>
 
   <header class="hero">
@@ -111,7 +125,6 @@
           <li>Data Analyst, Risk Analytics, Product Analyst, BI Analyst</li>
           <li>Fully remote or relocation with support</li>
           <li>International company, salary in USD/EUR</li>
-          <li>Small team where I own an area end-to-end</li>
         </ul>
       </div>
       <div class="about-card">

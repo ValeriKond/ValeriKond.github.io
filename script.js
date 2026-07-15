@@ -1,3 +1,32 @@
+// Theme toggle
+(function initTheme() {
+  const root = document.documentElement;
+  const btn = document.getElementById('theme-toggle');
+
+  function currentTheme() {
+    return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  }
+
+  function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem('theme', theme);
+    } catch (e) {}
+    updateNavBg();
+    window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+  }
+
+  if (!root.getAttribute('data-theme')) {
+    applyTheme('dark');
+  }
+
+  if (btn) {
+    btn.addEventListener('click', () => {
+      applyTheme(currentTheme() === 'light' ? 'dark' : 'light');
+    });
+  }
+})();
+
 // Scroll reveal
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver(
@@ -44,12 +73,16 @@ if (heroStats) statsObserver.observe(heroStats);
 
 // Nav background on scroll
 const nav = document.querySelector('.nav');
-window.addEventListener('scroll', () => {
-  nav.style.background =
-    window.scrollY > 60
-      ? 'rgba(6, 8, 15, 0.92)'
-      : 'rgba(6, 8, 15, 0.7)';
-});
+function updateNavBg() {
+  if (!nav) return;
+  const scrolled = window.scrollY > 60;
+  const styles = getComputedStyle(document.documentElement);
+  nav.style.background = scrolled
+    ? styles.getPropertyValue('--nav-bg-scrolled').trim()
+    : styles.getPropertyValue('--nav-bg').trim();
+}
+window.addEventListener('scroll', updateNavBg, { passive: true });
+updateNavBg();
 
 // Dynamic age & tenure
 (function initDynamicDates() {
@@ -125,6 +158,16 @@ document.querySelectorAll('.exp-header').forEach((btn) => {
   const COUNT = window.innerWidth < 768 ? 40 : 70;
   const LINK_DIST = 140;
 
+  function particleColors() {
+    const styles = getComputedStyle(document.documentElement);
+    return {
+      fill: styles.getPropertyValue('--particle').trim(),
+      linkRgb: styles.getPropertyValue('--particle-link').trim(),
+    };
+  }
+
+  let colors = particleColors();
+
   function resize() {
     w = canvas.width = window.innerWidth;
     h = canvas.height = window.innerHeight;
@@ -149,7 +192,7 @@ document.querySelectorAll('.exp-header').forEach((btn) => {
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(62, 232, 197, 0.35)';
+      ctx.fillStyle = colors.fill;
       ctx.fill();
 
       for (let j = i + 1; j < particles.length; j++) {
@@ -161,7 +204,7 @@ document.querySelectorAll('.exp-header').forEach((btn) => {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(q.x, q.y);
-          ctx.strokeStyle = `rgba(62, 232, 197, ${0.06 * (1 - dist / LINK_DIST)})`;
+          ctx.strokeStyle = `rgba(${colors.linkRgb}, ${0.08 * (1 - dist / LINK_DIST)})`;
           ctx.lineWidth = 0.6;
           ctx.stroke();
         }
@@ -177,5 +220,8 @@ document.querySelectorAll('.exp-header').forEach((btn) => {
     cancelAnimationFrame(animId);
     resize();
     draw();
+  });
+  window.addEventListener('themechange', () => {
+    colors = particleColors();
   });
 })();
