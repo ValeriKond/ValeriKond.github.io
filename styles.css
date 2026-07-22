@@ -172,7 +172,7 @@ body {
   justify-content: center;
   min-width: 64px;
   padding: 0.45rem 0.85rem;
-  border-radius: 999px;
+  border-radius: 6px;
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text-muted);
@@ -222,7 +222,7 @@ html[data-theme="light"] .theme-icon-sun { display: inline; }
   background: var(--accent-dim);
   color: var(--accent);
   border: 1px solid rgba(62, 232, 197, 0.3);
-  border-radius: 999px;
+  border-radius: 6px;
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 500;
@@ -275,7 +275,7 @@ html[data-theme="light"] .theme-icon-sun { display: inline; }
   padding: 0.35rem 1rem;
   background: var(--accent-dim);
   border: 1px solid rgba(62, 232, 197, 0.25);
-  border-radius: 999px;
+  border-radius: 6px;
   font-size: 0.8rem;
   color: var(--accent);
   font-family: var(--mono);
@@ -321,7 +321,7 @@ html[data-theme="light"] .theme-icon-sun { display: inline; }
 
 .btn {
   padding: 0.7rem 1.5rem;
-  border-radius: 999px;
+  border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
@@ -564,6 +564,18 @@ html[data-theme="light"] .theme-icon-sun { display: inline; }
   margin-top: 2.5rem;
 }
 
+.stack-groups-simple {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.stack-aside {
+  margin-top: 1.25rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 720px;
+}
+
 .stack-group {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -629,6 +641,37 @@ html[data-theme="light"] .theme-icon-sun { display: inline; }
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin-top: 2.5rem;
+}
+
+.cases-more {
+  margin-top: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 0.25rem 1rem 1rem;
+}
+
+.cases-more summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1rem 0.25rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-family: var(--mono);
+}
+
+.cases-more summary::-webkit-details-marker { display: none; }
+
+.cases-more summary::after {
+  content: ' +';
+  color: var(--accent);
+  margin-left: 0.35rem;
+}
+
+.cases-more[open] summary::after { content: ' −'; }
+
+.cases-collapsed {
+  margin-top: 0.25rem;
 }
 
 .case-card {
@@ -1102,7 +1145,7 @@ html[data-theme="light"] .theme-icon-sun { display: inline; }
   padding: 0.5rem 1rem;
   background: var(--accent-dim);
   border: 1px solid rgba(62, 232, 197, 0.3);
-  border-radius: 999px;
+  border-radius: 6px;
   font-family: var(--font);
   font-weight: 500;
 }
