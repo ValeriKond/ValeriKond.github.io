@@ -146,11 +146,13 @@
       <div class="about-card">
         <h3>Methods & analytics</h3>
         <div class="tags">
-          <span class="tag">Regression analysis</span>
+          <span class="tag">KPI design</span>
+          <span class="tag">Plan vs actual</span>
+          <span class="tag">Churn / retention</span>
+          <span class="tag">Funnel analysis</span>
           <span class="tag">Cohort retention</span>
           <span class="tag">LTV / NPS</span>
-          <span class="tag">Funnel analysis</span>
-          <span class="tag">KPI design</span>
+          <span class="tag">Regression analysis</span>
         </div>
       </div>
       <div class="about-card">
@@ -255,14 +257,30 @@
           <span class="case-tag">Retention</span>
           <span class="case-co">OTK Consulting</span>
         </div>
-        <h3>Churn early-warning</h3>
-        <p class="case-desc">Flags at-risk clients with linear regression on behavior signals. Results go to CRM so managers can act before churn.</p>
+        <h3>Churn & retention triggers</h3>
+        <p class="case-desc">Calculated churn rate and retention rate, then automated CRM alerts for managers when a client looked likely to leave.</p>
         <div class="case-metrics">
           <div><strong>$20k+</strong> saved per year</div>
           <div><strong>~1.5%</strong> of annual revenue</div>
         </div>
         <div class="case-stack">
-          <span>Python</span><span>Linear regression</span><span>SQL</span><span>Metabase</span>
+          <span>SQL</span><span>Python</span><span>AmoCRM</span><span>Metabase</span>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-header">
+          <span class="case-tag">Sales Analytics</span>
+          <span class="case-co">OTK Consulting</span>
+        </div>
+        <h3>Sales KPIs & plan vs actual</h3>
+        <p class="case-desc">Defined KPIs for the sales team and built plan vs actual reporting so managers could see targets vs results in one place.</p>
+        <div class="case-metrics">
+          <div><strong>Sales KPIs</strong> defined</div>
+          <div><strong>Plan / Fact</strong> reporting</div>
+        </div>
+        <div class="case-stack">
+          <span>SQL</span><span>Metabase</span><span>Google Sheets</span>
         </div>
       </article>
 
@@ -378,6 +396,8 @@
           <ul>
             <li>Built ELT pipeline: Airbyte + dbt + PostgreSQL (raw / staging / marts layers)</li>
             <li>Migrated analytics from Zoho to Metabase - ops, NPS, revenue dashboards</li>
+            <li>Defined sales team KPIs and plan vs actual reporting</li>
+            <li>Calculated churn rate and retention rate; automated CRM alerts for at-risk clients</li>
             <li>Document OCR from scratch: YOLOv11 (25 classes), PaddleOCR, OpenCV deskew via FastAPI</li>
             <li>ElevenLabs STT integration with AmoCRM for call transcription</li>
             <li>Deployed n8n, migrated automations there; STT/lead flows via n8n webhooks</li>
@@ -391,7 +411,7 @@
             <li>Monthly revenue +40% to $155k+; annual scale $1.1M to $1.4M+</li>
             <li>OCR errors from 15% to &lt;1%; 98% avg field accuracy (all fields, all docs); L1 manual work cut 5x</li>
             <li>Found $5k unbilled services (CRM ↔ billing gap)</li>
-            <li>Churn early-warning (linear regression) - $20k+/yr saved (~1.5% revenue)</li>
+            <li>Churn / retention triggers for managers - $20k+/yr saved (~1.5% revenue)</li>
             <li>CRM overhead for 5 managers: 1.5h to 30m per day (3x reduction)</li>
           </ul>
 
