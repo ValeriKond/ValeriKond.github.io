@@ -1199,3 +1199,36 @@ html[data-theme="light"] .theme-icon-sun { display: inline; }
   .contact-box { padding: 2rem 1.25rem; }
   .impact-grid { grid-template-columns: 1fr; }
 }
+
+/* CV language choice */
+.nav-cta.cv-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.2rem 0.25rem 0.2rem 0.75rem;
+}
+
+.cv-switch-label {
+  margin-right: 0.35rem;
+}
+
+.cv-switch a {
+  padding: 0.3rem 0.55rem;
+  border-radius: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  transition: background 0.2s;
+}
+
+.cv-switch a:hover { background: rgba(62, 232, 197, 0.25); }
+.nav-cta.cv-switch:hover { background: var(--accent-dim); }
+
+.btn-split {
+  display: inline-flex;
+  gap: 1px;
+}
+
+.btn-split .btn:first-child { border-radius: 6px 0 0 6px; }
+.btn-split .btn:last-child { border-radius: 0 6px 6px 0; }
