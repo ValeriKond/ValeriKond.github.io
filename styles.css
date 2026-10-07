@@ -476,7 +476,7 @@ html[data-theme="light"] .theme-icon-sun { display: inline; }
 }
 
 .about-list li::before {
-  content: '·';
+  content: '•';
   position: absolute;
   left: 0;
   color: var(--accent);
@@ -888,14 +888,14 @@ html[data-theme="light"] .theme-icon-sun { display: inline; }
 }
 
 .exp-body li::before {
-  content: '→';
+  content: '•';
   position: absolute;
   left: 0;
   color: var(--accent);
   font-size: 0.7rem;
 }
 
-.exp-results li::before { content: '★'; color: var(--accent-2); font-size: 0.6rem; top: 2px; }
+.exp-results li::before { content: '•'; color: var(--accent-2); font-size: 0.6rem; top: 2px; }
 
 .exp-tags {
   display: flex;
@@ -961,7 +961,7 @@ html[data-theme="light"] .theme-icon-sun { display: inline; }
   margin: 1.25rem 0 0.6rem;
 }
 
-.results-list li::before { content: '★'; color: var(--accent-2); }
+.results-list li::before { content: '•'; color: var(--accent-2); }
 
 /* Education */
 .edu-grid {
@@ -1059,7 +1059,7 @@ html[data-theme="light"] .theme-icon-sun { display: inline; }
 }
 
 .timeline-item li::before {
-  content: '→';
+  content: '•';
   position: absolute;
   left: 0;
   color: var(--accent);
